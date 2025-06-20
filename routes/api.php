@@ -117,6 +117,15 @@ Route::group(['prefix' => 'v1', 'middleware' => ['block.ip']], function () {
         Route::get('products/{id}/reviews-group-rating', [Rest\ProductController::class, 'reviewsGroupByRating'])
             ->where('id', '[0-9]+');
 
+        /* Countries */
+        Route::get('countries',                       [Rest\CountryController::class, 'index']);
+        Route::get('countries/{id}',                 [Rest\CountryController::class, 'show']);
+        Route::get('countries/{id}/cities',          [Rest\CityController::class, 'index']);
+
+        /* Cities */
+        Route::get('cities',                          [Rest\CityController::class, 'index']);
+        Route::get('cities/{id}',                    [Rest\CityController::class, 'show']);
+
         /* Categories */
         Route::get('categories/types',              [Rest\CategoryController::class, 'types']);
         Route::get('categories/parent',             [Rest\CategoryController::class, 'parentCategory']);
