@@ -26,7 +26,10 @@ class ServiceController extends RestBaseController
      */
     public function index(FilterParamsRequest $request): AnonymousResourceCollection
     {
-        $models = $this->repository->paginate($request->merge(['has_master' => true])->all());
+        $models = $this->repository->paginate($request->merge([
+            'has_master' => $request->input('has_master', true),
+            'strict_master_check' => $request->input('strict_master_check', false)
+        ])->all());
 
         return ServiceResource::collection($models);
     }

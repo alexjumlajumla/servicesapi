@@ -204,13 +204,17 @@ class Service extends Model
             ->when(data_get($filter, 'master_id'),    function ($q, $id) {
                 return $q->whereHas('serviceMasters', fn($q) => $q->where('master_id', $id));
             })
-            ->when(data_get($filter, 'has_master'), function ($q) {
-                return $q
-                    ->whereHas('serviceMaster', fn($q) => $q->where('active', true))
-                    ->has('serviceMaster.master.workingDays')
-                    ->whereHas('serviceMaster.master.invitations', function ($q) {
-                        $q->where('status', 2);
-                    });
+            ->when(data_get($filter, 'has_master'), function ($q) use ($filter) {
+                $query = $q->whereHas('serviceMaster', fn($q) => $q->where('active', true));
+                
+                // Only apply these additional filters if strict_master_check is true
+                if (data_get($filter, 'strict_master_check', false)) {
+                    $query->has('serviceMaster.master.workingDays')
+                          ->whereHas('serviceMaster.master.invitations', function ($q) {
+                              $q->where('status', 2);
+                          });
+                }
+                return $query;
             })
             ->when(data_get($filter, 'search'), fn($q, $search) => $q->where(function ($query) use ($search) {
                 $query->where(function ($query) use ($search) {
