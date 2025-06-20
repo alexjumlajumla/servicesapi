@@ -20,11 +20,21 @@ class CurrencySeeder extends Seeder
     {
         $currencies = [
             [
+                'id' => 1,
+                'symbol' => 'TSh',
+                'title' => 'TZS',
+                'rate' => 1.0,
+                'position' => 'before',
+                'default' => 1,
+                'active' => 1,
+            ],
+            [
                 'id' => 2,
                 'symbol' => '$',
                 'title' => 'USD',
-                'rate' => 1.0,
-                'default' => 1,
+                'rate' => 0.00043, // Approximate exchange rate (1 TZS = 0.00043 USD)
+                'position' => 'before',
+                'default' => 0,
                 'active' => 1,
             ]
         ];

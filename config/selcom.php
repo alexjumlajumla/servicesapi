@@ -117,4 +117,14 @@ return [
         'link' => env('SELCOM_LINK_COLOR', '#0000FF'),
         'button' => env('SELCOM_BUTTON_COLOR', '#008000'),
     ],
+
+    /*
+    |--------------------------------------------------------------------------
+    | Default Currency
+    |--------------------------------------------------------------------------
+    |
+    | This is the default currency code used for transactions.
+    |
+    */
+    'currency' => 'TZS',
 ];
