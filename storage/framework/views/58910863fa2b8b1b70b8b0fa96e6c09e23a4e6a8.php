@@ -47,4 +47,4 @@
         </div>
     </body>
 </html>
-<?php /**PATH /var/www/vhosts/jumlajumla.com/services.jumlajumla.com/resources/views/welcome.blade.php ENDPATH**/ ?>
+<?php /**PATH /Users/mac/Downloads/services.jumlajumla.com/resources/views/welcome.blade.php ENDPATH**/ ?>

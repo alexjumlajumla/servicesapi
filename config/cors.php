@@ -15,15 +15,25 @@ return [
     |
     */
 
-    'paths' => ['api/*', 'sanctum/csrf-cookie', 'v1/rest/*'],
+    'paths' => [
+        'api/*',
+        'sanctum/csrf-cookie',
+        'v1/rest/*',
+        'v1/dashboard/*',
+        'v1/rest/dashboard/*',
+        'v1/dashboard/user/*',
+    ],
 
     'allowed_methods' => ['*'],
 
     'allowed_origins' => [
         'http://localhost:3000',
         'http://127.0.0.1:3000',
+        'http://localhost:3001',
         'https://services.jumlajumla.com',
         'https://www.services.jumlajumla.com',
+        'https://huduma.jumlajumla.com',
+        'https://admin.jumlajumla.com',
     ],
 
     'allowed_origins_patterns' => [],
@@ -35,6 +45,8 @@ return [
         'Content-Type',
         'X-Requested-With',
         'X-CSRF-TOKEN',
+        'X-XSRF-TOKEN',
+        'X-Socket-ID',
     ],
 
     'max_age' => 0,
